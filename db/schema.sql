@@ -35,7 +35,7 @@ VALUES ('Cardinal',8,'BALABALABALA');
 
 
 INSERT INTO donor (organization_name,foodtype,quantity_avalaible, timewindow,location,donortext)
-VALUES ('JACK IN THE BOX','Mexican',11,'8pm to 9pm','2526 E Bell','BALABALABALA');
+VALUES ('Jack in the Box','Mexican',11,'8pm to 9pm','2526 E Bell','BALABALABALA');
 
 
 SELECT * FROM foodboxhero_db.donor;
