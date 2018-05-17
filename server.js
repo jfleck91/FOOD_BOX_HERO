@@ -104,11 +104,13 @@ app.use(express.static('public'));
 ////////////////////////////////////////
 ////////////////////////////////////////
 //////// MY CODE MY CODE MY CODE MY CODE///
-// *********************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-// *********************************************************************************
 
-// Dependencies
+
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
@@ -117,6 +119,9 @@ var bodyParser = require("body-parser");
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+
+// Requiring our models for syncing
+var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 
@@ -131,9 +136,12 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./controllers/api-routes.js")(app);
+require("./controllers/html-routes.js")(app);
 
-// Starts the server to begin listening
+// Syncing our sequelize models and then starting our Express app
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });

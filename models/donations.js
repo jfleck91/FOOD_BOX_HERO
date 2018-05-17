@@ -1,34 +1,59 @@
-// Dependencies
-// =============================================================
 
-// Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
-// sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/config.json");
+module.exports = function(sequelize, DataTypes) {
+
 // Creates a "donations" model that matches up with DB
 var Donations = sequelize.define("donations", {
-  
-  business: Sequelize.STRING,
 
-  foodtype: Sequelize.STRING,
- 
-  quantity_avalaible: Sequelize.INTEGER,
-
-  address: Sequelize.STRING,
- 
-  lastCall: Sequelize.DATE,
-
-  donorText: Sequelize.STRING,
-
-  donated_at: Sequelize.DATE,
-
- 
-}, {
-  timestamps: false
+business: {
+  type: DataTypes.STRING,
+  allowNull: false,
+  validate: {
+    len: [1]
+}},
+category: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+    len: [1]
+}},
+quantity_avalaible: {
+  type: DataTypes.INTEGER,
+  allowNull: false,
+  validate: {
+  len: [1]
+}},
+    
+address: {
+  type: DataTypes.STRING,
+  allowNull: false,
+  validate: {
+  len: [1]
+}},
+    
+lastCall: {
+  type: DataTypes.STRING,
+  allowNull: false,
+  validate: {
+  len: [1]
+}},
+donorText: {
+  type: DataTypes.TEXT,
+  allowNull: true,
+  validate: {
+    len: [1]
+}},
+          
+donated_at: {
+  type: DataTypes.DATE,
+  allowNull: false,
+  validate: {
+  len: [1]
+}},
+              
 });
 
 // Syncs with DB
-Donations.sync();
+return Donations;
 
-module.exports = Donations;
+}
 // Makes the Donations Model available for other files (will also create a table)

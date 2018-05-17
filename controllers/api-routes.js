@@ -3,24 +3,18 @@
 // *********************************************************************************
 
 // Dependencies
+
 // =============================================================
-var Donations = require("../models/donations.js");
-
-
+var db = require("../models/");
 // Routes
 // =============================================================
 module.exports = function(app) {
 
   // Get all chirps
-  app.get("/api/alldonations", function(req, res) {
-
-    // Finding all Chirps, and then returning them to the user as JSON.
-    // Sequelize queries are asynchronous, which helps with perceived speed.
-    // If we want something to be guaranteed to happen after the query, we'll use
-    // the .then function
-    Donations.findAll({}).then(function(results) {
+  app.get("/", function(req, res) {
+    db.Donations.findAll({}).then(function(results) {
       // results are available to us inside the .then
-      return res.json(results);
+      res.json(results);
     });
 
   });
@@ -29,26 +23,26 @@ module.exports = function(app) {
   app.post("/api/newdonations", function(req, res) {
 
       // Take the request...
-      var donaton = req.body;
+      var donate = req.body;
 
     console.log("Donations Data:");
-    console.log(donation);
+    console.log(donate);
 
    
     Donations.create({
-      business: donation.business,
+      business: donate.business,
 
-      foodtype: donation.foodtype,
+      category: donation.foodtype,
 
-      quantity_avalaible: donation.quantity_avalaible,
+      quantity_avalaible: donate.quantity_avalaible,
 
-      lastCall: donation.lastCall,
+      lastCall: donate.lastCall,
 
-      address: donation.address,
+      address: donate.address,
 
-      donorText: donation.donorText,
+      donorText: donate.donorText,
 
-      donated_at: donation.donated_at,
+      donated_at: donate.donated_at,
       
     }).then(function(results) {
       // `results` here would be the newly created donations

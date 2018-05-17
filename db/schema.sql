@@ -8,7 +8,7 @@ CREATE TABLE donations (
 
   business varchar(255),
 
-  foodtype varchar(255) NOT NULL,
+  category varchar(255) NOT NULL,
 
   quantity_avalaible int(11) NOT NULL,
 
@@ -52,6 +52,7 @@ INSERT INTO donations (business,foodtype,quantity_avalaible,lastCall,address,don
 VALUES ('Jack in the Box','Mexican',11,'9pm','2526 E Bell','BALABALABALA','time_Stamp')
 ,('McDonold','African',59,'9:30pm','1115 E Green','BALABmacALABALA','tsdfsime_Stdffamp');
 
-SELECT * FROM foodboxhero_db.donations;
+
 
 SELECT * FROM foodboxhero_db.recipients;
+SELECT * FROM foodboxhero_db.donations;
