@@ -3,14 +3,15 @@
 // *********************************************************************************
 
 // Dependencies
+var db = require("../models");
 
 // =============================================================
-var db = require("../models/");
+
 // Routes
 // =============================================================
 module.exports = function(app) {
 
-  // Get all chirps
+  // Get all donations
   app.get("/", function(req, res) {
     db.Donations.findAll({}).then(function(results) {
       // results are available to us inside the .then
