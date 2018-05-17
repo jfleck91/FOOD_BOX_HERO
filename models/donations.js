@@ -43,7 +43,7 @@ donorText: {
     len: [1]
 }},
           
-donated_at: {
+created_at: {
   type: DataTypes.DATE,
   allowNull: false,
   validate: {

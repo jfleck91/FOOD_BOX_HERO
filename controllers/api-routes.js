@@ -32,7 +32,7 @@ module.exports = function(app) {
     Donations.create({
       business: donate.business,
 
-      category: donation.foodtype,
+      category: donation.category,
 
       quantity_avalaible: donate.quantity_avalaible,
 
@@ -42,7 +42,7 @@ module.exports = function(app) {
 
       donorText: donate.donorText,
 
-      donated_at: donate.donated_at,
+      created_at: donate.created_at,
       
     }).then(function(results) {
       // `results` here would be the newly created donations

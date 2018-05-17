@@ -18,7 +18,7 @@ CREATE TABLE donations (
 
   donorText varchar(255) DEFAULT NULL,
 
-  donated_at VARCHAR(255) NOT NULL,
+  created_at VARCHAR(255) NOT NULL,
 
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -38,17 +38,19 @@ CREATE TABLE recipients (
 
   recipientText varchar(255) DEFAULT NULL,
 
+  created_at VARCHAR(255) NOT NULL,
+
   PRIMARY KEY (id)
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO recipients (recipiant_name,quantity_needed,recipientText)
-VALUES ('Cardinal',8,'BALABALABALA');
+INSERT INTO recipients (recipiant_name,quantity_needed,recipientText,created_at)
+VALUES ('Cardinal',8,'BALABALABALA','Time_Stamp');
 
 
 
-INSERT INTO donations (business,foodtype,quantity_avalaible,lastCall,address,donorText,donated_at)
+INSERT INTO donations (business,foodtype,quantity_avalaible,lastCall,address,donorText,created_at)
 VALUES ('Jack in the Box','Mexican',11,'9pm','2526 E Bell','BALABALABALA','time_Stamp')
 ,('McDonold','African',59,'9:30pm','1115 E Green','BALABmacALABALA','tsdfsime_Stdffamp');
 
