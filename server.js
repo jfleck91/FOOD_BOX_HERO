@@ -1,3 +1,4 @@
+/*
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
@@ -16,11 +17,11 @@ app.use(bodyParser.json());
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
+/*
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "George91",
+  password: "Science4ever",
   database: "foodBoxHero_db"
 });
 
@@ -38,28 +39,28 @@ connection.connect(function(err) {
 
 // Root get route
 app.get("/", function(req, res) {
-  connection.query("SELECT * FROM donor;", function(err, data) {
+  connection.query("SELECT * FROM donations;", function(err, data) {
     if (err) throw err;
     res.render("home",  {donations : data});
   });
 });
 
 app.get("/donor", function(req, res) {
-  connection.query("SELECT * FROM donor;", function(err, data) {
+  connection.query("SELECT * FROM donations;", function(err, data) {
     if (err) throw err;
-    res.render("donor",  {donations : data});
+    res.render("donations",  {donations : data});
   });
 });
 
 app.get("/recipient", function(req, res) {
-  connection.query("SELECT * FROM donor;", function(err, data) {
+  connection.query("SELECT * FROM donations;", function(err, data) {
     if (err) throw err;
-    res.render("recipient",  {donations : data});
+    res.render("recipients",  {donations : data});
   });
 });
 
 app.get("/login", function(req, res) {
-  connection.query("SELECT * FROM donor;", function(err, data) {
+  connection.query("SELECT * FROM donations;", function(err, data) {
     if (err) throw err;
     res.render("login",  {donations : data});
   });
@@ -71,14 +72,14 @@ app.post("/create/new", function(req, res) {
   if (req.body.buisness && req.body.food && req.body.address && !req.body.none) {
   
   //restful call to create a new user
-  db.donor.create({
-      organization_name: req.body.buisness,
+  db.donations.create({
+    buisness: req.body.buisness,
       
   })
     .then(function() {
     
     // redirect back to log in page for user to login
-    res.redirect("/donor");
+    res.redirect("/donations");
     });
 }
 });
@@ -94,3 +95,45 @@ app.listen(PORT, function() {
 
 //Allows us to use local styling from our public/assets folder.
 app.use(express.static('public'));
+*/
+////////////////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////
+//////// MY CODE MY CODE MY CODE MY CODE///
+// *********************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+// *********************************************************************************
+
+// Dependencies
+// =============================================================
+var express = require("express");
+var bodyParser = require("body-parser");
+
+// Sets up the Express App
+// =============================================================
+var app = express();
+var PORT = process.env.PORT || 8080;
+
+// Sets up the Express app to handle data parsing
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
+
+// Static directory
+app.use(express.static("public"));
+
+// Routes
+// =============================================================
+require("./controllers/api-routes.js")(app);
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});
