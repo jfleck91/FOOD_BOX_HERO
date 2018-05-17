@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var mysql = require("mysql");
 
+
 var app = express();
 
 // Set the port of our application
@@ -31,6 +32,9 @@ connection.connect(function(err) {
 
   console.log("connected as id " + connection.threadId);
 });
+
+//var htmlRoutes = require("./controllers/htmlRoutes.js");
+//app.use("/", htmlRoutes);
 
 // Root get route
 app.get("/", function(req, res) {
@@ -62,8 +66,31 @@ app.get("/login", function(req, res) {
 });
 
 
+app.post("/create/new", function(req, res) {
+  // if statement to check if fields are not blank
+  if (req.body.buisness && req.body.food && req.body.address && !req.body.none) {
+  
+  //restful call to create a new user
+  db.donor.create({
+      organization_name: req.body.buisness,
+      
+  })
+    .then(function() {
+    
+    // redirect back to log in page for user to login
+    res.redirect("/donor");
+    });
+}
+});
+
+
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
+
+
+
+//Allows us to use local styling from our public/assets folder.
+app.use(express.static('public'));

@@ -8,16 +8,47 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
 
   <body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="./images/logo.png" class="brand-logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipient">Recieve</a></li>
+        <li><a href="/donor">Donate</a></li>
+        
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipient">Recieve</a></li>
+        <li><a href="/donor">Donate</a></li>
+        
+      </ul>
+      <a href="./images/logo.png" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
     {{{ body }}}
+
+    
+  <footer class="page-footer red">
+    <div class="footer-copyright">
+      <div class="container">
+      <a class="brown-text text-lighten-3 float right">FoodBox Hero 2018</a>
+      <a href="https://www.gpo.gov/fdsys/pkg/PLAW-104publ210/pdf/PLAW-104publ210.pdf">Legal Info</a>
+      </div>
+    </div>
+  </footer>
+  
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../js/materialize.js"></script>
-  <script src="../js/init.js"></script>
+  <script src="./../js/materialize.js"></script>
+  <script src="./../js/init.js"></script>
   </body>
 
 </html>
