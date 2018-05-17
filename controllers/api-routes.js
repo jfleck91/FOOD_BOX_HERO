@@ -4,7 +4,9 @@
 
 // Dependencies
 var db = require("../models");
+var express = require("express");
 
+var app = express();
 // =============================================================
 
 // Routes

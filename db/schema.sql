@@ -7,8 +7,8 @@ CREATE TABLE donations (
   id int(11) NOT NULL AUTO_INCREMENT,
 
   business varchar(255),
-
-  category varchar(255) NOT NULL,
+  
+  catagory varchar(255) NOT NULL,
 
   quantity_avalaible int(11) NOT NULL,
 
@@ -50,7 +50,7 @@ VALUES ('Cardinal',8,'BALABALABALA','Time_Stamp');
 
 
 
-INSERT INTO donations (business,foodtype,quantity_avalaible,lastCall,address,donorText,created_at)
+INSERT INTO donations (business,catagory,quantity_avalaible,lastCall,address,donorText,created_at)
 VALUES ('Jack in the Box','Mexican',11,'9pm','2526 E Bell','BALABALABALA','time_Stamp')
 ,('McDonold','African',59,'9:30pm','1115 E Green','BALABmacALABALA','tsdfsime_Stdffamp');
 
