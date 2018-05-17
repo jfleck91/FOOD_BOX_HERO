@@ -1,4 +1,4 @@
-/*
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
@@ -9,19 +9,19 @@ var app = express();
 
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8000;
 
-// Sets up the Express app to handle data parsing
+ //Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-/*
+
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Science4ever",
+  password: "George91",
   database: "foodBoxHero_db"
 });
 
@@ -34,8 +34,8 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-//var htmlRoutes = require("./controllers/htmlRoutes.js");
-//app.use("/", htmlRoutes);
+var htmlRoutes = require("./controllers/html-routes.js");
+app.use("/", htmlRoutes);
 
 // Root get route
 app.get("/", function(req, res) {
@@ -95,16 +95,6 @@ app.listen(PORT, function() {
 
 //Allows us to use local styling from our public/assets folder.
 app.use(express.static('public'));
-*/
-////////////////////////////////////////
-////////////////////////////////////////
-////////////////////////////////////////
-////////////////////////////////////////
-////////////////////////////////////////
-////////////////////////////////////////
-////////////////////////////////////////
-//////// MY CODE MY CODE MY CODE MY CODE///
-
 
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
@@ -136,7 +126,6 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 require("./controllers/api-routes.js")(app);
-require("./controllers/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
