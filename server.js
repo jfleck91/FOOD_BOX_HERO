@@ -13,17 +13,13 @@ var PORT = process.env.PORT || 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-
 
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "YourPass Goes Here",
+  password: "George91",
   database: "foodBoxHero_db"
 });
 
@@ -40,14 +36,28 @@ connection.connect(function(err) {
 app.get("/", function(req, res) {
   connection.query("SELECT * FROM donor;", function(err, data) {
     if (err) throw err;
+    res.render("home",  {donations : data});
+  });
+});
 
-    // Test it
-    // console.log('The solution is: ', data);
+app.get("/donor", function(req, res) {
+  connection.query("SELECT * FROM donor;", function(err, data) {
+    if (err) throw err;
+    res.render("donor",  {donations : data});
+  });
+});
 
-    // Test it
-    // return res.send(data);
+app.get("/recipient", function(req, res) {
+  connection.query("SELECT * FROM donor;", function(err, data) {
+    if (err) throw err;
+    res.render("recipient",  {donations : data});
+  });
+});
 
-    res.render("index",  {donations : data});
+app.get("/login", function(req, res) {
+  connection.query("SELECT * FROM donor;", function(err, data) {
+    if (err) throw err;
+    res.render("login",  {donations : data});
   });
 });
 
