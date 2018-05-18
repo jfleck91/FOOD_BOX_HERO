@@ -35,15 +35,26 @@ module.exports = function(app) {
     Donations.create({
       business: donate.business,
 
-      category: donation.category,
+      donorText: donate.donorText,
 
       quantity_avalaible: donate.quantity_avalaible,
 
-      lastCall: donate.lastCall,
+      category: donation.category,
 
       address: donate.address,
 
-      donorText: donate.donorText,
+      category: donate.category,
+
+      // food type dropdown select
+
+      // allergens checkbox select
+      
+      pickupDate: donate.pickupDate,
+
+      lastCall: donate.lastCall,
+
+      
+      
 
       created_at: donate.created_at,
       
