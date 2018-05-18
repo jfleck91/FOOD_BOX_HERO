@@ -2,7 +2,7 @@
 var express = require("express");
 var router = express.Router();
 var path = require("path");
-
+var mysql = require("mysql");
 var app = express();
 
 // Root get route
@@ -35,5 +35,5 @@ app.get("/", function(req, res) {
       res.render("login",  {donations : data});
     });
   });
-
 };
+
