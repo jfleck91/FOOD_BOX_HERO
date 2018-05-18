@@ -5,7 +5,7 @@
 // Dependencies
 var db = require("../models");
 var express = require("express");
-
+var mysql = require("mysql");
 var app = express();
 // =============================================================
 
@@ -14,8 +14,8 @@ var app = express();
 module.exports = function(app) {
 
   // Get all donations
-  app.get("/", function(req, res) {
-    db.Donations.findAll({}).then(function(results) {
+  app.get("/donations", function(req, res) {
+    db.donations.findAll({}).then(function(results) {
       // results are available to us inside the .then
       res.json(results);
     });
