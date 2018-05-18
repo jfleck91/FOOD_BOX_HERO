@@ -56,5 +56,5 @@ VALUES ('Jack in the Box','Mexican',11,'9pm','2526 E Bell','BALABALABALA','time_
 
 
 
-SELECT * FROM foodboxhero_db.recipients;
-SELECT * FROM foodboxhero_db.donations;
+SELECT * FROM foodBoxHero_db.recipients;
+SELECT * FROM foodBoxHero_db.donations;
