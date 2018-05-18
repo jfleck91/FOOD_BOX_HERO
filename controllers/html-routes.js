@@ -8,32 +8,51 @@ var app = express();
 // Root get route
 module.exports = function(app) {
 
-app.get("/", function(req, res) {
-    connection.query("SELECT * FROM donations;", function(err, data) {
-      if (err) throw err;
-      res.render("home",  {donations : data});
+  app.get("/", function(req, res) {
+      res.render("home");
     });
-  });
-  
-  app.get("/donor", function(req, res) {
-    connection.query("SELECT * FROM donations;", function(err, data) {
-      if (err) throw err;
-      res.render("donations",  {donations : data});
+
+
+  app.get("/donor", function(req, res) { 
+      res.render("donations");
     });
-  });
   
   app.get("/recipient", function(req, res) {
-    connection.query("SELECT * FROM donations;", function(err, data) {
-      if (err) throw err;
-      res.render("recipients",  {donations : data});
-    });
-  });
-  
+      res.render("recipients");
+    });  
+
   app.get("/login", function(req, res) {
-    connection.query("SELECT * FROM donations;", function(err, data) {
-      if (err) throw err;
-      res.render("login",  {donations : data});
+      res.render("login");
     });
-  });
-};
+  };
+
+
+
+  
+//app.get("/", function(req, res) {
+//    connection.query("SELECT * FROM donations;", function(err, data) {
+//      if (err) throw err;
+//      res.render("home",  {donations : data});
+//    });
+//  });
+//
+//  app.get("/donor", function(req, res) {
+//    connection.query("SELECT * FROM donations;", function(err, data) {
+//      if (err) throw err;
+//      res.render("donations",  {donations : data});
+//    });
+//  }); 
+//  app.get("/recipient", function(req, res) {
+//    connection.query("SELECT * FROM donations;", function(err, data) {
+//      if (err) throw err;
+//      res.render("recipients",  {donations : data});
+//    });
+//  }); 
+//  app.get("/login", function(req, res) {
+//    connection.query("SELECT * FROM donations;", function(err, data) {
+//      if (err) throw err;
+//      res.render("login",  {donations : data});
+//    });
+//  });
+//};
 
