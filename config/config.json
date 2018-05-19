@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "George91",
+    "password": "Science4ever",
     "database": "foodBoxHero_db",
     "host": "localhost",
     "dialect": "mysql"
