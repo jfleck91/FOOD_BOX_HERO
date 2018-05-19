@@ -12,6 +12,16 @@ var Donations = sequelize.define("donations", {
     }
   },
 
+  food: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [1]
+  }
+},
+
+
+
     quantity_avalaible: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -36,7 +46,7 @@ var Donations = sequelize.define("donations", {
     }
   },
 
-    pickupTime: {
+    pickupDate: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -57,13 +67,33 @@ var Donations = sequelize.define("donations", {
       allowNull: false,
       validate: {
       len: [1]
+      }
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+      len: [1]
     }
   },      
 
-  //catagory dropdown menu not null
+ category:{
+   type:DataTypes.STRING,
+   allowNull: false,
+   validate: {
+    len: [1]
+  }
+ },
 
-  //allergen checkboxs allow null
+ allergen:{
+  type:DataTypes.STRING,
+  allowNull: false,
+  validate: {
+   len: [1]
+ }
+},
 
+  
  });
 
 // Syncs with DB

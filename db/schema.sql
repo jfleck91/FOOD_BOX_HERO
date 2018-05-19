@@ -14,9 +14,9 @@ CREATE TABLE donations (
 
   quantity_avalaible int(11) NOT NULL,
  
--- food type dropdown not null
+food_type VARCHAR(255),
 
--- allergens checkboxes null allowed
+allergens VARCHAR(255),
 
   pickupDate varchar(255) NOT NULL,
 
