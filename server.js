@@ -27,9 +27,6 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-
-
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
@@ -42,7 +39,7 @@ app.use(express.static("public"));
 // =============================================================
 require("./controllers/html-routes.js")(app);
 require("./controllers/api-routes.js")(app);
-// require("./controllers/post-api-routes.js")(app);
+require("./controllers/post-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
