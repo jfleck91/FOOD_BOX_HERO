@@ -4,7 +4,7 @@
 module.exports = function(sequelize, DataTypes) {
 
     // Creates a "donations" model that matches up with DB
-    var Donations = sequelize.define("donations", {
+    var Recipients = sequelize.define("donations", {
     
         business: {
           type: DataTypes.STRING,
