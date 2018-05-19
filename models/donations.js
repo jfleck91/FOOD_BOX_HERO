@@ -11,13 +11,7 @@ var Donations = sequelize.define("donations", {
         len: [1]
     }
   },
-    category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-        len: [1]
-    }
-  },
+
     quantity_avalaible: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -41,6 +35,15 @@ var Donations = sequelize.define("donations", {
       len: [1]
     }
   },
+
+    pickupTime: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+      len: [1]
+    }
+  },
+
     donorText: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -56,6 +59,11 @@ var Donations = sequelize.define("donations", {
       len: [1]
     }
   },      
+
+  //catagory dropdown menu not null
+
+  //allergen checkboxs allow null
+
  });
 
 // Syncs with DB
