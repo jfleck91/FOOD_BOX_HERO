@@ -6,7 +6,7 @@ var Donations = sequelize.define("donations", {
 
     business: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1]
     }
@@ -14,7 +14,7 @@ var Donations = sequelize.define("donations", {
 
   food: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       len: [1]
   }
@@ -24,7 +24,7 @@ var Donations = sequelize.define("donations", {
 
     quantity_avalaible: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
       len: [1]
     }
@@ -32,7 +32,7 @@ var Donations = sequelize.define("donations", {
         
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       len: [1]
     }
@@ -40,7 +40,7 @@ var Donations = sequelize.define("donations", {
         
     lastCall: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       len: [1]
     }
@@ -48,7 +48,7 @@ var Donations = sequelize.define("donations", {
 
     pickupDate: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
       len: [1]
     }
@@ -64,14 +64,14 @@ var Donations = sequelize.define("donations", {
               
     created_at: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       validate: {
       len: [1]
       }
     },
     updated_at: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
       validate: {
       len: [1]
     }
@@ -79,7 +79,7 @@ var Donations = sequelize.define("donations", {
 
  category:{
    type:DataTypes.STRING,
-   allowNull: false,
+   allowNull: true,
    validate: {
     len: [1]
   }
@@ -87,7 +87,7 @@ var Donations = sequelize.define("donations", {
 
  allergen:{
   type:DataTypes.STRING,
-  allowNull: false,
+  allowNull: true,
   validate: {
    len: [1]
  }
