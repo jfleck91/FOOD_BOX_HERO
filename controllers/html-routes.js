@@ -12,7 +12,6 @@ module.exports = function(app) {
       res.render("home");
     });
 
-
   app.get("/donor", function(req, res) { 
       res.render("donations");
     });
@@ -26,6 +25,7 @@ module.exports = function(app) {
     });
   };
 
+  
 
 
   
