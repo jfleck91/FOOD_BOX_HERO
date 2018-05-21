@@ -49,7 +49,7 @@ $("#submit_donor").on("click", function(event) {
   console.log(newDonation);
 
   // Send an AJAX POST-request with jQuery
-  $.post("./api/addnew", newDonation)
+  $.get("./api/addnew", newDonation)
     // On success, run the following code
     .then(function() {
 
