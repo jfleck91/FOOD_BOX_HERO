@@ -20,9 +20,7 @@ var Donations = sequelize.define("donations", {
   }
 },
 
-
-
-    quantity_avalaible: {
+ quantity_avalaible: {
       type: DataTypes.INTEGER,
       allowNull: true,
       validate: {
