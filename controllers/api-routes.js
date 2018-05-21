@@ -12,24 +12,38 @@ var app = express();
 
 var db = require("../models");
 
-// Root get route
+
 module.exports = function(app) {
 
  // Routes
 // =============================================================
- // Get all chirps
- app.get("/api/all", function(req, res) {
-   // Finding all DOnations, and then returning them to the user as JSON.
-   // Sequelize queries are asynchronous, which helps with perceived speed.
-   // If we want something to be guaranteed to happen after the query, we'll use
-   // the .then function
-   db.donations.findAll({}).then(function(results) {
-     // results are available to us inside the .then
-     res.json(results);
-   });
- });
- // Add a donation/api/newdonation
-  app.get("/api/adddonations", function(req, res) {
+ // Get all Donations
+ app.get("/api/all/:id?", function(req, res) {
+  if (req.params.id) {
+    // Then display the JSON for ONLY that donation.
+    
+    db.donations.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result) {
+      return res.json(result);
+    });
+  }
+  else {
+  
+    // Otherwise display the data for all of the donations.
+    
+    db.donations.findAll({}).then(function(result) {
+      return res.json(result);
+    });
+  }
+
+
+  });
+
+ // Add a donation/api/adddonation
+  app.get("/api/addnew", function(req, res) {
     var d = req.body;
     console.log("Donation:");
     console.log(d);
@@ -46,14 +60,32 @@ module.exports = function(app) {
       updated_at:d.updated_at,
       category:d.category,
       allergen:d.allergen
-
-      
       ///////
     }).then(function(results) {
       // `results` here would be the newly created Donor
       res.end();
     });
   });
- };
+ 
 
+
+
+
+ /////////////////////////////
+ 
+  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // req.params.id
+  app.get("/api/delete/:id", function(req, res) {
+    // We just have to specify which donation we want to destroy with "where"
+    db.donations.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+
+  });
+
+};
 
