@@ -15,23 +15,18 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
   });
 
+
+ console.log('test');
+
 //////////////////////////////////
-$(document).ready(function(event){
-
-
-
-
-
-
 
 
 $("#submit_donor").on("click", function(event) {
   event.preventDefault();
+  
 
   // Make a newChirp object
   var newDonation = {
-
-    
     business:$("#buisness").val().trim(),
     //food:$("#author").val().trim(),
     quantity_avalaible:$("#quantity_availible").val().trim(),
@@ -51,23 +46,25 @@ $("#submit_donor").on("click", function(event) {
   // Send an AJAX POST-request with jQuery
   $.get("./api/addnew", newDonation)
     // On success, run the following code
-    .then(function() {
+    .then(function(data) {
+      console.log(data);
+      alert('adding')
 
-      var row = $("<div>");
-      row.addClass("donation");
+      // var row = $("<div>");
+      // row.addClass("donation");
 
-      row.append("<p>" + newDonation.business + "<p>");
-      row.append("<p>" + newDonation.quantity_avalaible + "</p>");
-      row.append("<p>At " + moment(newDonation.created_at).format("h:mma on dddd") + "</p>");
+      // row.append("<p>" + newDonation.business + "<p>");
+      // row.append("<p>" + newDonation.quantity_avalaible + "</p>");
+      // row.append("<p>At " + moment(newDonation.created_at).format("h:mma on dddd") + "</p>");
 
-      $("#donation_area").prepend(row);
+      // $("#donation_area").prepend(row);
 
     });
 
   // Empty each input box by replacing the value with an empty string
   //$("#buisness").val("");
   //$("#box").val("");
-});
+
 
 // When the page loads, grab all of our Donations
 $.get("/api/all", function(data) {
@@ -90,7 +87,5 @@ $.get("/api/all", function(data) {
   }
 
 });
-
-
 
 });
