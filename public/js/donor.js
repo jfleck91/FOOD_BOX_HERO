@@ -17,12 +17,12 @@ $(document).ready(function(){
 //////////////////////////////////
 
 /* global moment */
-
+$(document).ready(function(){
 // When user clicks add-btn
 $("#donation_Submit").on("click", function(event) {
   event.preventDefault();
 
-  // Make a newChirp object
+  // Make a newDonation object
   //newCrisp
   
 
@@ -85,4 +85,5 @@ $.get("/api/all", function(data) {
 
   }
 */
+});
 });

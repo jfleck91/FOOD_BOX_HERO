@@ -12,7 +12,7 @@ var app = express();
 
 var db = require("../models");
 
-// Root get route
+
 module.exports = function(app) {
 
  // Routes
@@ -23,7 +23,6 @@ module.exports = function(app) {
    // Sequelize queries are asynchronous, which helps with perceived speed.
    // If we want something to be guaranteed to happen after the query, we'll use
    // the .then function
-
     db.donations.findAll({}).then(function(results) {
       // results are available to us inside the .then
       res.json(results);
@@ -32,12 +31,11 @@ module.exports = function(app) {
 
  });
   // Get one Donations
-  app.get("/api/:id", function(req, res) {
+  app.get("/api/all/:id", function(req, res) {
     // Finding all Donations, and then returning them to the user as JSON.
     // Sequelize queries are asynchronous, which helps with perceived speed.
     // If we want something to be guaranteed to happen after the query, we'll use
     // the .then function
- 
      db.donations.findAll({
        where:{
          id:req.params.id
@@ -49,31 +47,32 @@ module.exports = function(app) {
    
  
   });
-
  // Add a donation/api/adddonation
-  app.get("/api/adddonations", function(req, res) {
-    var d = req.body;
-    console.log("Donation:");
-    console.log(d);
-    db.donations.create({
-    
-      business:d.business,
-      food:d.food,
-      quantity_avalaible:d.quantity_avalaible,
-      address:d.address,
-      lastCall:d.lastCall,
-      pickupDate:d.lastCall,
-      donorText:d.donorText,
-      created_at:d.created_at,
-      updated_at:d.updated_at,
-      category:d.category,
-      allergen:d.allergen
-      ///////
-    }).then(function(results) {
-      // `results` here would be the newly created Donor
-      res.end();
-    });
+ app.get("/api/new", function(req, res) {
+  var d = req.body;
+  console.log("Donation:");
+  console.log(d);
+  db.donations.create({
+  
+    business:d.business,
+    food:d.food,
+    quantity_avalaible:d.quantity_avalaible,
+    address:d.address,
+    lastCall:d.lastCall,
+    pickupDate:d.lastCall,
+    donorText:d.donorText,
+    created_at:d.created_at,
+    updated_at:d.updated_at,
+    category:d.category,
+    allergen:d.allergen
+    ///////
+  }).then(function(results) {
+    // `results` here would be the newly created Donor
+    res.end();
   });
+});
+
+    
  
 
 
@@ -83,7 +82,7 @@ module.exports = function(app) {
  
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from
   // req.params.id
-  app.delete("/api/:id/delete", function(req, res) {
+  app.delete("/api/delete/:id", function(req, res) {
     // We just have to specify which donation we want to destroy with "where"
     db.donations.destroy({
       where: {
