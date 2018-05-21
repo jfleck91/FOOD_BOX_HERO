@@ -13,9 +13,9 @@ module.exports = function(app) {
     });
 
   app.get("/donor", function(req, res) { 
-      //res.render("donations");
-      res.sendFile(path.join(__dirname, "../views/test.html"));
-      //res.sendFile(path.join(__dirname,"../public/views.donations.handlebars"));
+      res.render("donations");
+     // res.sendFile(path.join(__dirname, "../views/test.html"));
+      //res.sendFile(path.join(__dirname,"../views.donations.handlebars"));
     });
   
   app.get("/recipient", function(req, res) {
@@ -32,15 +32,15 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/testHome.html"));
     });
   
-  };
-
-
-
-  app.get("/signup", function(req, res) {
+  
+    app.get("/signup", function(req, res) {
     res.render("signup");
   });
 
+  
 };
+
+
 
   
 
