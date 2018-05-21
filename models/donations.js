@@ -66,6 +66,7 @@ var Donations = sequelize.define("donations", {
       validate: {
       len: [1]
       }
+      
     },
     updated_at: {
       type: DataTypes.DATE,
