@@ -23,12 +23,10 @@ var PORT = process.env.PORT || 8080;
  
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
  // session secret
- 
+ // persistent login sessions
 app.use(passport.initialize());
  
 app.use(passport.session()); 
-
-// persistent login sessions
 
 //Models
 var db = require("./models");
