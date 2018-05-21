@@ -1,6 +1,4 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
+//******************************************************************
 // Dependencies
 // =============================================================
 
@@ -18,61 +16,54 @@ module.exports = function(app) {
  // Routes
 // =============================================================
  // Get all Donations
- app.get("/api/all", function(req, res) {
-   // Finding all Donations, and then returning them to the user as JSON.
-   // Sequelize queries are asynchronous, which helps with perceived speed.
-   // If we want something to be guaranteed to happen after the query, we'll use
-   // the .then function
-    db.donations.findAll({}).then(function(results) {
-      // results are available to us inside the .then
-      res.json(results);
-    }); 
-  
-
- });
-  // Get one Donations
-  app.get("/api/all/:id", function(req, res) {
-    // Finding all Donations, and then returning them to the user as JSON.
-    // Sequelize queries are asynchronous, which helps with perceived speed.
-    // If we want something to be guaranteed to happen after the query, we'll use
-    // the .then function
-     db.donations.findAll({
-       where:{
-         id:req.params.id
-       }
-     }).then(function(results) {
-       // results are available to us inside the .then
-       res.json(results);
-     }); 
-   
- 
-  });
- // Add a donation/api/adddonation
- app.get("/api/new", function(req, res) {
-  var d = req.body;
-  console.log("Donation:");
-  console.log(d);
-  db.donations.create({
-  
-    business:d.business,
-    food:d.food,
-    quantity_avalaible:d.quantity_avalaible,
-    address:d.address,
-    lastCall:d.lastCall,
-    pickupDate:d.lastCall,
-    donorText:d.donorText,
-    created_at:d.created_at,
-    updated_at:d.updated_at,
-    category:d.category,
-    allergen:d.allergen
-    ///////
-  }).then(function(results) {
-    // `results` here would be the newly created Donor
-    res.end();
-  });
-});
-
+ app.get("/api/all/:id?", function(req, res) {
+  if (req.params.id) {
+    // Then display the JSON for ONLY that donation.
     
+    db.donations.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result) {
+      return res.json(result);
+    });
+  }
+  else {
+  
+    // Otherwise display the data for all of the donations.
+    
+    db.donations.findAll({}).then(function(result) {
+      return res.json(result);
+    });
+  }
+
+
+  });
+
+ // Add a donation/api/adddonation
+  app.get("/api/addnew", function(req, res) {
+    var d = req.body;
+    console.log("Donation:");
+    console.log(d);
+    db.donations.create({
+    
+      business:d.business,
+      food:d.food,
+      quantity_avalaible:d.quantity_avalaible,
+      address:d.address,
+      lastCall:d.lastCall,
+      pickupDate:d.lastCall,
+      donorText:d.donorText,
+      created_at:d.created_at,
+      updated_at:d.updated_at,
+      category:d.category,
+      allergen:d.allergen
+      ///////
+    }).then(function(results) {
+      // `results` here would be the newly created Donor
+      res.end();
+    });
+  });
  
 
 
@@ -80,9 +71,9 @@ module.exports = function(app) {
 
  /////////////////////////////
  
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // DELETE route for deleting donation. We can get the id of the donation to be deleted from
   // req.params.id
-  app.delete("/api/delete/:id", function(req, res) {
+  app.get("/api/:id/delete", function(req, res) {
     // We just have to specify which donation we want to destroy with "where"
     db.donations.destroy({
       where: {
@@ -93,6 +84,41 @@ module.exports = function(app) {
     });
 
   });
+
+
+
+    // PUT route for updating donation
+    app.get("/api/:id/update", function(req, res) {
+
+      // Update takes in an object describing the properties we want to update, and
+      // we use where to describe which objects we want to update
+      var d = req.body;
+      db.donations.update({
+        
+        business:d.business,
+        food:d.food,
+        quantity_avalaible:d.quantity_avalaible,
+        address:d.address,
+        lastCall:d.lastCall,
+        pickupDate:d.lastCall,
+        donorText:d.donorText,
+        created_at:d.created_at,
+        updated_at:d.updated_at,
+        category:d.category,
+        allergen:d.allergen
+      }, {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(db) {
+        res.json(db);
+      })
+        .catch(function(err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+          res.json(err);
+        });
+    });
 
 };
 
