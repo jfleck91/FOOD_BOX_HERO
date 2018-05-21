@@ -41,29 +41,29 @@ module.exports = function(app) {
   });
 
  // Add a donation/api/adddonation
-  app.get("/api/addnew", function(req, res) {
-    var d = req.body;
-    console.log("Donation:");
-    console.log(d);
-    db.donations.create({
-    
-      business:d.business,
-      food:d.food,
-      quantity_avalaible:d.quantity_avalaible,
-      address:d.address,
-      lastCall:d.lastCall,
-      pickupDate:d.lastCall,
-      donorText:d.donorText,
-      created_at:d.created_at,
-      updated_at:d.updated_at,
-      category:d.category,
-      allergen:d.allergen
-      ///////
-    }).then(function(results) {
-      // `results` here would be the newly created Donor
-      res.end();
-    });
+ app.get("/api/addnew", function(req, res) {
+  var d = req.body;
+  console.log("Donation:");
+  console.log(d);
+  db.donations.create({
+  
+    business:d.business,
+    food:d.food,
+    quantity_avalaible:d.quantity_avalaible,
+    address:d.address,
+    lastCall:d.lastCall,
+    pickupDate:d.lastCall,
+    donorText:d.donorText,
+    created_at:d.created_at,
+    updated_at:d.updated_at,
+    category:d.category,
+    allergen:d.allergen
+    ///////
+  }).then(function(results) {
+    // `results` here would be the newly created Donor
+    res.end();
   });
+});
  
 
 

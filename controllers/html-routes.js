@@ -23,6 +23,12 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
       res.render("login");
     });
+
+
+    app.get("/test", function(req, res) {
+      res.sendFile(path.join(__dirname, "../public/testHome.html"));
+    });
+  
   };
 
   
