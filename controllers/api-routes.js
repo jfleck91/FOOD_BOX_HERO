@@ -1,6 +1,4 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
+//******************************************************************
 // Dependencies
 // =============================================================
 
@@ -73,9 +71,9 @@ module.exports = function(app) {
 
  /////////////////////////////
  
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // DELETE route for deleting donation. We can get the id of the donation to be deleted from
   // req.params.id
-  app.get("/api/delete/:id", function(req, res) {
+  app.get("/api/:id/delete", function(req, res) {
     // We just have to specify which donation we want to destroy with "where"
     db.donations.destroy({
       where: {
@@ -86,6 +84,41 @@ module.exports = function(app) {
     });
 
   });
+
+
+
+    // PUT route for updating donation
+    app.get("/api/:id/update", function(req, res) {
+
+      // Update takes in an object describing the properties we want to update, and
+      // we use where to describe which objects we want to update
+      var d = req.body;
+      db.donations.update({
+        
+        business:d.business,
+        food:d.food,
+        quantity_avalaible:d.quantity_avalaible,
+        address:d.address,
+        lastCall:d.lastCall,
+        pickupDate:d.lastCall,
+        donorText:d.donorText,
+        created_at:d.created_at,
+        updated_at:d.updated_at,
+        category:d.category,
+        allergen:d.allergen
+      }, {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(db) {
+        res.json(db);
+      })
+        .catch(function(err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+          res.json(err);
+        });
+    });
 
 };
 
