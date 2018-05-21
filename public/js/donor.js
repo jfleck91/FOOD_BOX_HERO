@@ -1,4 +1,4 @@
-/*
+
 $(document).ready(function(){
     $('.timepicker').timepicker();
   });
@@ -14,15 +14,14 @@ $(document).ready(function(){
   $(document).ready(function(){
     $('.collapsible').collapsible();
   });
-*/
+
 //////////////////////////////////
 $(document).ready(function(event){
 
-  event.preventDefault;
 
 
-console.log("testing");
-});
+
+
 
 
 
@@ -50,7 +49,7 @@ $("#submit_donor").on("click", function(event) {
   console.log(newDonation);
 
   // Send an AJAX POST-request with jQuery
-  $.get("./api/addnew", newDonation)
+  $.post("./api/addnew", newDonation)
     // On success, run the following code
     .then(function() {
 
@@ -66,7 +65,7 @@ $("#submit_donor").on("click", function(event) {
     });
 
   // Empty each input box by replacing the value with an empty string
-  $("#buisness").val("");
+  //$("#buisness").val("");
   //$("#box").val("");
 });
 
@@ -89,5 +88,9 @@ $.get("/api/all", function(data) {
     }
 
   }
+
+});
+
+
 
 });
