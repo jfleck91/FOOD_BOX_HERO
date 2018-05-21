@@ -11,6 +11,7 @@ var exphbs = require("express-handlebars");
 var passport   = require('passport')
 var session    = require('express-session')
 
+//var authRoute = require('./authroutes/auth.js')(app);
 
 // Sets up the Express App
 // =============================================================
@@ -29,8 +30,19 @@ app.use(passport.session());
 
 // persistent login sessions
 
-// Requiring our models for syncing
+//Models
 var db = require("./models");
+ 
+//Sync Database
+db.sequelize.sync().then(function() {
+ 
+    console.log('Nice! Database looks fine')
+ 
+}).catch(function(err) {
+ 
+    console.log(err, "Something went wrong with the Database Update!")
+ 
+});
 
 //Handlebars Engine
 app.engine("handlebars", exphbs({
@@ -59,8 +71,8 @@ require("./controllers/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-});
+
