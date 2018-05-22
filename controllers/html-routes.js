@@ -19,14 +19,16 @@ module.exports = function(app) {
     });
   
   app.get("/recipient", function(req, res) {
-    res.sendFile(path.join(__dirname, "../recipient/.html"));;
+    res.sendFile(path.join(__dirname, "../public/recipients/.html"));;
     });  
 
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../recipient/signup.html"));;
+    res.sendFile(path.join(__dirname, "../public/login.html"));;
     });
 
-
+    app.get("/signup", function(req, res) {
+      res.sendFile(path.join(__dirname, "../public/signup.html"));;
+      });
 
     //app.get("/test", function(req, res) {
       //res.sendFile(path.join(__dirname, "../public/testHome.html"));
