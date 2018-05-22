@@ -2,7 +2,17 @@
 $(document).ready(function () {
   console.log("some shit");
 
-  $("#submit_donor").on("click", function (event) {
+
+$(document).ready(function(){
+
+
+  $(document).ready(function(){
+
+  
+    $('.timepicker').timepicker();
+  });
+
+  $("submit_donor").on("click", function (event) {
     event.preventDefault();
 
     // Make a newChirp object
@@ -88,4 +98,5 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('.collapsible').collapsible();
+});
 });
