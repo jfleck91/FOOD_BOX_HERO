@@ -1,21 +1,3 @@
-/*
-$(document).ready(function(){
-  $('.timepicker').timepicker();
-});
-
-$(document).ready(function(){
-  $('.datepicker').datepicker();
-});
-        
-$(document).ready(function(){
-  $('select').formSelect();
-});
-
-$(document).ready(function(){
-  $('.collapsible').collapsible();
-});
-*/
-
 //////////////////////////////////
 $(document).ready(function () {
   console.log("some shit");
@@ -90,4 +72,20 @@ $(document).ready(function () {
 
 
 
+});
+
+$(document).ready(function(){
+  $('.timepicker').timepicker();
+});
+
+$(document).ready(function(){
+  $('.datepicker').datepicker();
+});
+        
+$(document).ready(function(){
+  $('select').formSelect();
+});
+
+$(document).ready(function(){
+  $('.collapsible').collapsible();
 });
