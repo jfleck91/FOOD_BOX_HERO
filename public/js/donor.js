@@ -1,5 +1,10 @@
 
 $(document).ready(function(){
+
+
+  $(document).ready(function(){
+
+  
     $('.timepicker').timepicker();
   });
 
@@ -88,4 +93,5 @@ $.get("/api/all", function(data) {
 
 });
 
+});
 });
