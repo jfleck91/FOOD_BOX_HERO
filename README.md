@@ -6,3 +6,4 @@ With 1.3 billion tons of food wasted each year it only makes sense to put some o
 
 our app will match resturaunts, hotels, events, ect that have leftover food. with those less fortunate. Create a account, select the food in your area, and pick it up at the location provided, all at no cost to you. 
 
+this app employs the use of handelbars, this app currently is a work in progress
